@@ -1,8 +1,28 @@
+import 'package:dictionary/root/bindings/root_binding.dart';
+import 'package:dictionary/root/views/root_view.dart';
+import 'package:dictionary/routes/pages.dart';
+import 'package:dictionary/servers/app_bindings.dart';
+import 'package:dictionary/servers/auth_service.dart';
+import 'package:dictionary/tab_demo/home.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:logger/logger.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: "Dictionary",
+      theme: ThemeData(),
+      darkTheme: ThemeData(),
+      defaultTransition: Transition.fadeIn,
+      initialRoute: '/',
+      initialBinding: AppBindings(),
+      getPages: [
+        GetPage(name: '/', page: () => RootView(), binding: RootBinding())
+      ]));
 }
+
+var logger = Logger();
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
