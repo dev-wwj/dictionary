@@ -1,11 +1,9 @@
 import 'package:clipboard/clipboard.dart';
 import 'package:dictionary/main.dart';
-import 'package:dictionary/servers/auth_service.dart';
 import 'package:dictionary/servers/toast_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
-import 'package:toastification/toastification.dart';
 
 class SettingDrawerView extends StatelessWidget {
   const SettingDrawerView({super.key});
@@ -22,33 +20,32 @@ class SettingDrawerView extends StatelessWidget {
             flex: 1,
           ),
           _row(ListTile(
-            title: Text('意见反馈'),
+            title: Text('feedback'.tr),
             trailing: Text('fyddwwj@hotmail.com'),
             onTap: () {
               FlutterClipboard.copy('fyddwwj@hotmail.com').then((value) {
                 logger.i('clipboard email');
-                toastService.show(context, 'message');
-
+                toastService.showSuccess(context, 'email_copy_success'.tr);
               });
             },
           )),
           _row(AboutListTile(
             applicationIcon: FlutterLogo(),
-            applicationName: '随身字典',
+            applicationName: 'app_name'.tr,
             applicationVersion: 'v0.0.1',
             applicationLegalese: 'Copyright© 2024-2044 Scorpio',
             aboutBoxChildren: [
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Text(
-                  '随身字典',
+                  'app_name'.tr,
                   style: TextStyle(color: Color(0xff999999), fontSize: 16),
                   textAlign: TextAlign.justify,
                 ),
               ),
             ],
             child: Row(
-              children: [Text('about'), Spacer(), Icon(Icons.info_outline)],
+              children: [Text('about'.tr), Spacer(), Icon(Icons.info_outline)],
             ),
           )),
           Spacer(

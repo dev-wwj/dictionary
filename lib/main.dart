@@ -1,3 +1,5 @@
+import 'package:dictionary/constant/w_theme.dart';
+import 'package:dictionary/constant/w_translations.dart';
 import 'package:dictionary/root/bindings/root_binding.dart';
 import 'package:dictionary/root/views/root_view.dart';
 import 'package:dictionary/routes/pages.dart';
@@ -11,9 +13,12 @@ import 'package:logger/logger.dart';
 void main() {
   runApp(GetMaterialApp(
       debugShowCheckedModeBanner: false,
+      translations: WTranslations(),
+      locale: Locale('zh', 'CN'),
+      fallbackLocale: Locale('zh', 'CN'),
       title: "Dictionary",
-      theme: ThemeData(),
-      darkTheme: ThemeData(),
+      theme: lightTheme,
+      darkTheme: darkTheme,
       defaultTransition: Transition.fadeIn,
       initialRoute: '/',
       initialBinding: AppBindings(),
